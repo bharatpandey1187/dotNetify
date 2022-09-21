@@ -41,6 +41,8 @@ namespace DotNetify.Postgres
 
         public string PublicationName { get; }
 
+        public event EventHandler<PostgreMessageEventArgs> OnEventEmitted;
+
         Task StartAsync();
         Task StopAsync();
     }
@@ -52,6 +54,8 @@ namespace DotNetify.Postgres
         private readonly CancellationTokenSource _cancelTokenSource = new CancellationTokenSource();
         private readonly Dictionary<uint, Relation> _relations = new Dictionary<uint, Relation>();
         private readonly ISubject<Transaction> _transactionSubject = Subject.Synchronize(new Subject<Transaction>());
+
+        public event EventHandler<PostgreMessageEventArgs> OnEventEmitted;
 
         public IObservable<Transaction> Transaction => _transactionSubject;
         public string PublicationName { get { return _config.PublicationName; } }
@@ -79,6 +83,11 @@ namespace DotNetify.Postgres
 
         private void EmitEvent(Transaction transactionEvent)
         {
+            OnEventEmitted.Invoke(this, new PostgreMessageEventArgs
+            {
+                Publisher = this.PublicationName,
+                Message = JsonConvert.SerializeObject(transactionEvent.DataEvents)
+            });
             if (transactionEvent.DataEvents.Count > 0)
                 _transactionSubject.OnNext(transactionEvent);
         }
@@ -153,9 +162,6 @@ namespace DotNetify.Postgres
                 }
                 else if (messageType == typeof(CommitMessage))
                 {
-#if DEBUG
-                    Console.Write("JSON RECEIVED: In Parent Assembley{0},Data-{1}", Assembly.GetEntryAssembly().GetName(), Newtonsoft.Json.JsonConvert.SerializeObject(transactionEvent.DataEvents));
-#endif
                     EmitEvent(transactionEvent);
                 }
                 else if (messageType == typeof(RelationMessage))
@@ -183,7 +189,7 @@ namespace DotNetify.Postgres
                     transactionEvent.DataEvents.Add(new InsertEvent
                     {
                         Relation = relation,
-                        
+
                         ColumnValues = await ToStringArrayAsync(insertMsg.NewRow)
                     });
                 }

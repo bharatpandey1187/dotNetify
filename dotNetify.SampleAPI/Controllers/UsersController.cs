@@ -21,8 +21,11 @@ namespace dotNetify.SampleAPI.Controllers
         [Route("Create")]
         public IActionResult Create()
         {
-            var users = FakerService.GetFakeUsers(1);
-            _usersVM.AddBatch(users);
+            for (int index = 1; index <= 10; index++)
+            {
+                var users = FakerService.GetFakeUsers(30);
+                _usersVM.AddBatch(users);
+            }
 
             return Ok();
         }

@@ -8,5 +8,6 @@ namespace dotNetfiy.Subscriber
 {
     public interface ICOMPaaSDbChangeObserver
     {
+
     }
 }

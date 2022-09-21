@@ -11,12 +11,21 @@ namespace dotNetfiy.Subscriber
     public class UserPIIDbChangeObserver : ICOMPaaSDbChangeObserver //BaseVM,ICOMPaaSDbChangeObserver
     {
 
-        private IDbChangeObserver dbChangeObserver;
-        public UserPIIDbChangeObserver(IEnumerable<IDbChangeObserver> dbChangeObservers)
+        private IPostgresReplicationSubscriber _replicationSubscriber;
+        public UserPIIDbChangeObserver(IEnumerable<IPostgresReplicationSubscriber> replicationSubscribers)
         {
-            dbChangeObserver = dbChangeObservers.FirstOrDefault(x => x.Name == "poc_logicaldecoding_pub");
+            _replicationSubscriber = replicationSubscribers.FirstOrDefault(x => x.PublicationName == "poc_logicaldecoding_pub");
             //this.ObserveList<User>(nameof(Users), dbChangeObserver);
+            _replicationSubscriber.OnEventEmitted += OnMessageReceived;
             //this.ObserveList<Address>(nameof(Addresses), dbChangeObserver);
+        }
+
+        private void OnMessageReceived(object? sender, PostgreMessageEventArgs e)
+        {
+            using (FileStream fileStream = File.Open("user.json", FileMode.Append))
+            {
+                fileStream.Write(Encoding.UTF8.GetBytes(e.Message + Environment.NewLine));
+            }
         }
     }
 }
