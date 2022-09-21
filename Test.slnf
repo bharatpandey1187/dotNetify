@@ -1,0 +1,11 @@
+{
+  "solution": {
+    "path": "DotNetify.Postgres.sln",
+    "projects": [
+      "Demo\\React\\RealtimeDb.Postgres\\RealtimeDb.csproj",
+      "DotNetifyLib.Core\\DotNetifyLib.Core.csproj",
+      "DotNetifyLib.Postgres\\DotNetifyLib.Postgres.csproj",
+      "dotNetify.Console\\dotNetify.Console.csproj"
+    ]
+  }
+}

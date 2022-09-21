@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetifyLib.Postgres", "DotNetifyLib.Postgres\DotNetifyLib.Postgres.csproj", "{8ADC2176-5FB0-4AE2-96A6-24AF894348D3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetifyLib.Core", "DotNetifyLib.Core\DotNetifyLib.Core.csproj", "{81B64FDD-0D10-4278-A9D2-204B07BAF4EC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtimeDb", "Demo\React\RealtimeDb.Postgres\RealtimeDb.csproj", "{1518C5FB-F8FD-4937-8B05-98ABE0D66A2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetify.Console", "dotNetify.Console\dotNetify.Console.csproj", "{18137DD9-CF6E-4ACD-AA16-BFEFC7E93643}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetify.SampleAPI", "dotNetify.SampleAPI\dotNetify.SampleAPI.csproj", "{DF415B02-9C20-4E87-965A-8572AE282B35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNetfiy.Subscriber", "dotNetfiy.Subscriber\dotNetfiy.Subscriber.csproj", "{66CBFE2E-1AF3-4C6A-94FD-687946D99176}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{1518C5FB-F8FD-4937-8B05-98ABE0D66A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1518C5FB-F8FD-4937-8B05-98ABE0D66A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1518C5FB-F8FD-4937-8B05-98ABE0D66A2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18137DD9-CF6E-4ACD-AA16-BFEFC7E93643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18137DD9-CF6E-4ACD-AA16-BFEFC7E93643}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18137DD9-CF6E-4ACD-AA16-BFEFC7E93643}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18137DD9-CF6E-4ACD-AA16-BFEFC7E93643}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF415B02-9C20-4E87-965A-8572AE282B35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF415B02-9C20-4E87-965A-8572AE282B35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF415B02-9C20-4E87-965A-8572AE282B35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF415B02-9C20-4E87-965A-8572AE282B35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66CBFE2E-1AF3-4C6A-94FD-687946D99176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66CBFE2E-1AF3-4C6A-94FD-687946D99176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66CBFE2E-1AF3-4C6A-94FD-687946D99176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66CBFE2E-1AF3-4C6A-94FD-687946D99176}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
